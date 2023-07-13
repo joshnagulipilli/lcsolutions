@@ -14,15 +14,12 @@ public:
                }
                else if(v[i]=="+"){
                       int p=s.top();
-                      sum=0;
-                      sum=sum+s.top();
                       s.pop();
                       int y=s.top() ;
-                      sum=sum+s.top();
                       s.pop();
                       s.push(y);
                       s.push(p);
-                      s.push(sum);
+                      s.push(y+p);
                }
                else{
                    int p=stoi(v[i]);
