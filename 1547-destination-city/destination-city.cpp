@@ -1,36 +1,16 @@
 class Solution {
 public:
     string destCity(vector<vector<string>>& paths) {
-        map<string,int>m1;
-        for(int i=0;i<paths.size();i++){
-            m1[paths[i][0]]++;
-            m1[paths[i][1]]++;
+        unordered_map<string,string>m;
+        set<string>v;
+        for(auto i:paths){
+            m[i[0]]=i[1];
+            v.insert(i[0]);
+            v.insert(i[1]);
         }
-    vector<string>temp;
-        for(auto i:m1){
-            if(i.second==1){
-                temp.push_back(i.first);
-            }
+        for(auto i:v) {
+            if(m[i]=="") return i;
         }
-        string ans="";
-        for(int i=0;i<paths.size();i++){
-            if(temp[0]==paths[i][1]) {
-                ans+=temp[0];
-                break;
-            }
-            if(temp[1]==paths[i][1]){
-                ans+=temp[1];
-                break;
-            }
-        }
-        return ans;
-        
+        return "";
     }
 };
-auto init = []()
-{ 
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    return 'c';
-}();
