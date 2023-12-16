@@ -1,18 +1,23 @@
 class Solution {
+    private:
+       int arr[26]={0};
 public:
     bool isAnagram(string s, string t) {
-         int n=s.length();
-         int m=t.length();
-         map<char,int>m1,m2;
-         for(int i=0;i<n;i++){
-             m1[s[i]]++;
+        if(s.size()!=t.size()) return false;
+         for(int i=0;i<s.length();i++){
+             int idx = s[i]-'a';
+             arr[idx]++;
          }
-         for(int i=0;i<m;i++){
-              m2[t[i]]++;
+         for(int i=0;i<t.length();i++){
+             int idx =t[i]-'a';
+             arr[idx]--; 
          }
-         if(m1==m2) return true;
-         return false;
 
+         for(int i=0;i<26;i++){
+             if(arr[i]!=0) 
+             return false;
+         }
+    return true;
     }
 };
 auto init=[](){
