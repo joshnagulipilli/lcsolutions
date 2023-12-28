@@ -5,7 +5,7 @@ public:
         cin.tie(0);
         cout.tie(0);
         int n=nums.size();
-        map<int,int>mapp;
+        unordered_map<int,int>mapp;
         mapp[0]=1;
         int sum=0, c=0;
         for(int i=0;i<n;i++){
