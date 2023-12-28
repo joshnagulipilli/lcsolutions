@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
-        ios::sync_with_stdio(false);
+        ios_base::sync_with_stdio(false);
         cin.tie(0);
         int n=nums.size();
         vector<int>v(n);
