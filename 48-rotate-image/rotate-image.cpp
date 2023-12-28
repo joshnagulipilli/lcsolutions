@@ -1,11 +1,10 @@
 class Solution {
 public:
     void rotate(vector<vector<int>>& matrix) {
-        std::ios_base::sync_with_stdio(false);
-        cin.tie(0);
+        
         int n=matrix.size();
         for(int i=0;i<n;i++){
-            for(int j=0;j<i;j++){
+            for(int j=0;j<=i;j++){
                 swap(matrix[i][j],matrix[j][i]);
             }
         }
