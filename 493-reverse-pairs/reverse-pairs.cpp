@@ -57,6 +57,8 @@ public:
     }
 
     int reversePairs(vector<int>& nums) {
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
         int n=nums.size();
         int cnt=countPairs(nums,n);
         return cnt;
