@@ -4,20 +4,16 @@ public:
         ios::sync_with_stdio(false);
         cin.tie(nullptr);
         int n=height.size();
+        int  maxi=INT_MIN;
         int area;
-        int ans=INT_MIN;
-        int m;
-        int l=0 , r=n-1;
-        while(l<r){
-            area=min(height[l],height[r])*(r-l);
-            ans=max(area,ans);
-            if(height[l]<=height[r]){
-                l++;
-            }
-            else  {
-                r--;
-            }
+        int left=0;int right=n-1;
+        while(left<right){
+            area=min(height[left],height[right]) * (right-left);
+            maxi=max(area,maxi);
+            if(height[left]<height[right]) left++;
+            else right--;
         }
-        return ans;
+        return maxi;
+
     }
 };
