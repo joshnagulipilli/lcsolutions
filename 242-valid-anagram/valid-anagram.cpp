@@ -4,20 +4,15 @@ class Solution {
 public:
     bool isAnagram(string s, string t) {
         if(s.size()!=t.size()) return false;
-         for(int i=0;i<s.length();i++){
-             int idx = s[i]-'a';
-             arr[idx]++;
-         }
-         for(int i=0;i<t.length();i++){
-             int idx =t[i]-'a';
-             arr[idx]--; 
-         }
-
-         for(int i=0;i<26;i++){
-             if(arr[i]!=0) 
-             return false;
-         }
-    return true;
+       map<int,int>m1,m2;
+       for(int i=0;i<s.size();i++)
+       {
+           m1[s[i]]++;
+       }
+       for(int i=0;i<t.size();i++){
+           m2[t[i]]++;
+       }
+       return m1==m2;
     }
 };
 auto init=[](){
