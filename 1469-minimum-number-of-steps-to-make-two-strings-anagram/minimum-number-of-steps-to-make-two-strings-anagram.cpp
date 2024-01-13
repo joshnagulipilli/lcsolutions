@@ -7,14 +7,13 @@ public:
             m1[s[i]]++;
         }
         for(int i=0;i<t.size();i++){
-            if(m1[t[i]]==0)
-            {
-                cnt++;
-            }
-            else 
-            m1[t[i]]--;
-
+            if(m1[t[i]]!=0)
+             m1[t[i]]--;
         }
+        for(auto i:m1){
+            cnt+=i.second;
+        }
+
         return cnt;
     }
 };
