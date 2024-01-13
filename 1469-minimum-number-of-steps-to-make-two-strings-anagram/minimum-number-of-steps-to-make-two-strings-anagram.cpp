@@ -15,11 +15,6 @@ public:
             m1[t[i]]--;
 
         }
-        int count=0;
-        for(auto i:m1){
-            count+=i.second;
-        }
-     
         return cnt;
     }
 };
