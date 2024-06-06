@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool isNStraightHand(vector<int>& hand, int groupSize) {
+        int n=hand.size();
+        if(n%groupSize!=0) return 0;
+        map<int,int>mp;
+        for(auto i:hand)mp[i]++;
+        for(auto i=mp.begin();i!=mp.end();){
+            if(i->second>0){
+                for(int j=0;j<groupSize;j++){
+                    if(mp[i->first+j]>0)
+                    {
+                        mp[i->first+j]--;
+                    }
+                    else return 0;
+                }
+            }
+            else i++;
+        }
+        return 1;
+    }
+};
