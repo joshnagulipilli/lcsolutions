@@ -1,34 +1,32 @@
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        vector<vector<int>>ans;
-        sort(nums.begin(),nums.end());
-        int n=nums.size();
-      
-        for(int i=0;i<n;i++)
+       int n=nums.size();
+       vector<vector<int>>ans;
+       unordered_map<int,int>mp;
+       sort(nums.begin(),nums.end());
+       if(n< 3) return {};
+       if(nums[0] > 0) return {};
+       for(int i=0;i<n;i++)
+       {
+        mp[nums[i]]=i;
+       }
+       for(int i=0;i<n-2;i++)
+       {
+        if(nums[i]>0) break;
+        for(int j=i+1;j<n-1;j++)
         {
-              if(i>0 && nums[i]==nums[i-1]) continue;
-              int j=i+1;
-              int k=n-1;
-              while(j<k)
-              {
-                int sum=nums[i]+nums[j]+nums[k];
-                if(sum==0)
-                {
-                    vector<int>temp;
-                    temp={nums[i],nums[j],nums[k]};
-                    ans.push_back(temp);
-                j++;k--;
-                while(j<k && nums[j]==nums[j-1]) j++;
-                while(j<k && nums[k]==nums[k+1]) k--;
+            int rem= -1 * (nums[i]+nums[j]);
+            if(mp.count(rem) && mp.find(rem)->second >j)
+            {  
+                ans.push_back({nums[i],nums[j],rem});
+            }
+            j=mp.find(nums[j])->second; // inorder to remove duplicates;
 
-                }
-                else if(sum > 0 ) k--;
-                else j++;
-              }
         }
-    return ans;
-             
+        i=mp.find(nums[i])->second;
+       }
+       return ans;
     }
 };
 auto init = []()
