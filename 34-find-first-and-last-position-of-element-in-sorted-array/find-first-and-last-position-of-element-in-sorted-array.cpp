@@ -1,47 +1,55 @@
 class Solution {
 public:
 
-    int fun1(vector<int>& nums,int low,int high,int x)
+
+     int fun2(vector<int>& nums,int low,int high,int x)
     {
-        int ans=nums.size() ;
+        int last=-1;
         while(low<=high)
         {
             int mid=(low+high)/2;
-            if(nums[mid]>=x)
+            if(nums[mid]==x)
             {
-                high=mid-1;
-                ans=mid;
+                last=mid;
+                low=mid+1;
             }
-            else
+            else if(nums[mid]<x)
             {
                 low=mid+1;
             }
+            else high=mid-1;
         }
-        return ans;
+        return last;
     }
 
-    int fun(vector<int>& nums,int low,int high,int x)
+
+    int fun1(vector<int>& nums,int low,int high,int x)
     {
-        int ans=nums.size();
+        int first=-1;
         while(low<=high)
         {
             int mid=(low+high)/2;
-            if(nums[mid]>x)
+            if(nums[mid]==x)
             {
-                ans=mid;
+                first=mid;
                 high=mid-1;
             }
-            else    low=mid+1;
+            else if(nums[mid]<x)
+            {
+                low=mid+1;
+            }
+            else high=mid-1;
         }
-        return ans;
+        return first;
     }
 
 
     vector<int> searchRange(vector<int>& nums, int k) {
        int n=nums.size();
-       int lb=fun1(nums,0,n-1,k);
-       if(lb==n || nums[lb]!=k) return {-1,-1};
-       return {lb,fun(nums,0,n-1,k)-1};
+       int first=fun1(nums,0,n-1,k);
+       if(first==-1) return {-1,-1};
+       int last=fun2(nums,0,n-1,k);
+       return {first,last};
 
     }
 };
