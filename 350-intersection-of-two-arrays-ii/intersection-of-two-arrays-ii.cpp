@@ -12,7 +12,7 @@ public:
                mp[nums2[i]]--;
             }
         }
-         sort(v.begin(),v.end());
+         
         return v;
     }
 };
