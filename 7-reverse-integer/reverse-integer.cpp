@@ -1,4 +1,4 @@
-#define bound 2147483647
+#define bound 2147483648
 
 class Solution {
 public:
@@ -10,7 +10,7 @@ public:
             res=res*10+(temp%10);
             temp/=10;
         }
-        if(res>bound || res<((-1)*(bound))-1) return 0;
+        if(res>bound-1 || res<((-1)*(bound))) return 0;
         if(x<0) return (-1)*res;
         return res;
     }
