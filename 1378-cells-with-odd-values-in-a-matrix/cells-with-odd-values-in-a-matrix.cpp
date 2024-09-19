@@ -5,41 +5,30 @@ public:
         vector<vector<int>>v(n,vector<int>(m,0));
         for(int i=0;i<indices.size();i++)
         {
-            int a = indices[i][0];
-            // int b=indices[i][1];
-            for(int j=0;j<n;j++)
+            int row = indices[i][0];
+            int col = indices[i][1];
+            for(int j=0;j<m;j++)
             {
-                for(int k=0;k<m;k++)
+                v[row][j]++;
+            }
+                for(int j=0;j<n;j++)
                 {
-                    if(j==a) v[j][k]++;
+                 v[j][col]++;
                 }
             }
-        }
-        for(int i=0;i<indices.size();i++)
-        {
-            // int a = indices[i][0];
-            int b=indices[i][1];
-            for(int j=0;j<n;j++)
-            {
-                for(int k=0;k<m;k++)
-                {
-                    if(k==b) v[j][k]++;
-                }
-            }
-        }
-
+        
+        
         for(int i=0;i<n;i++)
         {
             for(int j=0;j<m;j++)
             {
-                cout<<v[i][j]<<" ";
+                // cout<<v[i][j]<<" ";
                 if(v[i][j]%2==1) 
                 {
-
                     ans++;
                 }
             }
-            cout<<endl;
+            // cout<<endl;
         }
         return ans;
     }
