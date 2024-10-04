@@ -5,16 +5,16 @@ public:
         cin.tie(0);
         cout.tie(0);
         int n=arr.size();
-    int ans=0;
-    for(int i=0;i<n;i++)
-    {
-        int sum=0;
-        for(int j=i;j<n;j++)
+        unordered_map<int,int>mp;
+        mp[0]=1;
+        int sum=0,c=0;
+        for(int i=0;i<n;i++)
         {
-            sum+=arr[j];
-            if(sum==target) ans++;
+            sum+=arr[i];
+            int t=sum-target;
+            c+=mp[t];
+            mp[sum]+=1;
         }
-    }
-    return ans;
+        return c;
     }
 };
