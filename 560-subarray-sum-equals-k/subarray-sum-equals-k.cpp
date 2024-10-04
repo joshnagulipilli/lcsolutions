@@ -1,20 +1,20 @@
 class Solution {
 public:
-    int subarraySum(vector<int>& nums, int k) {
+    int subarraySum(vector<int>& arr, int target) {
         ios::sync_with_stdio(false);
         cin.tie(0);
         cout.tie(0);
-        int n=nums.size();
-        unordered_map<int,int>mapp;
-        mapp[0]=1;
-        int sum=0, c=0;
-        for(int i=0;i<n;i++){
-            sum+=nums[i];
-            int p=sum-k;
-            c+=mapp[p];
-            mapp[sum]+=1;
-        } 
-        return c;
-
+        int n=arr.size();
+    int ans=0;
+    for(int i=0;i<n;i++)
+    {
+        int sum=0;
+        for(int j=i;j<n;j++)
+        {
+            sum+=arr[j];
+            if(sum==target) ans++;
+        }
+    }
+    return ans;
     }
 };
