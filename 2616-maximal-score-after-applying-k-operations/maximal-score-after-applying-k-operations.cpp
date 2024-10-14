@@ -1,21 +1,22 @@
 class Solution {
 public:
     long long maxKelements(vector<int>& nums, int k) {
-        int n=nums.size();
         priority_queue<int>pq;
-        for(int i=0;i<n;i++)
+        for(auto it:nums)
         {
-            pq.push(nums[i]);
+            pq.push(it);
         }
         long long score=0;
-        while(k-- && !pq.empty())
+        while(k--)
         {
-            score+=pq.top();
-            int p=pq.top();
-            cout<<p<<" ";
+            
+            double p=pq.top(); // to get  ceil value correct
             pq.pop();
-            p=ceil(static_cast<double>(p)/3);
-            cout<<p<<endl;
+            score+=p;
+            // cout<<p<<" ";
+            // p=ceil(static_cast<double>(p)/3); if double not used
+            p=ceil(p/3);
+            // cout<<p<<endl;
             pq.push(p);
         }
         return score;
