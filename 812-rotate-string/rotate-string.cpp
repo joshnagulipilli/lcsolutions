@@ -1,20 +1,16 @@
 class Solution {
 public:
     bool rotateString(string s, string goal) {
-        int n=s.size();
-        if(goal.size()!=s.size()) return false;
-        while(n--)
-        {
-            if(s==goal) return true;
-            char temp = s[0];
-            for(int i=1;i<s.size();i++)
-            {
-                s[i-1]=s[i];
-            }
-            s[s.size()-1]=temp;
-            
-            cout<<s<<endl;
-        }
-        return false;
+       if(s.length()!=goal.length()) return false;
+       int n=s.size();
+       while(n--){
+        if(s==goal) return true;
+         char ch = s[0];
+         for(int j=1;j<s.size();j++){
+                 s[j-1]=s[j];
+         }
+         s[s.size()-1]=ch;
+       }
+       return false;
     }
 };
