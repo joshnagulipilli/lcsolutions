@@ -2,28 +2,19 @@ class Solution {
 public:
     vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
         int n=grid.size();
-        vector<int>ans(2),v(n*n);
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<n;j++)
-            {
-                v.push_back(grid[i][j]);
-
+        vector<int>v(2) , ans(n*n);
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                ans.push_back(grid[i][j]);
             }
         }
-        sort(v.begin(),v.end());
-        //to find repeating character
-        for(int i=1;i<v.size();i++)
-        {
-            if(v[i]==v[i-1]) ans[0]=v[i];
-            if(v[i]-v[i-1] > 1) ans[1]=v[i]-1;
+        sort(ans.begin(),ans.end());
+        for(int i=0;i<ans.size();i++)cout<<ans[i]<<" ";
+        for(int i=1;i<ans.size();i++){
+            if(ans[i]-ans[i-1]>1) v[1]=ans[i]-1;
+            else if(ans[i]==ans[i-1]) v[0]=ans[i];
         }
-        //to find missing number
-        if(ans[1]==0) {
-            ans[1]=n*n;
-        }
-       return ans;
-        
-         
+        if(v[1]==0) v[1]=n*n;
+        return v;
     }
 };
